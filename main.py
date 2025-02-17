@@ -37,7 +37,10 @@ def main():
                 break
         except:
             print("Invalid input, try again!")
+            game.show_grid()
             continue
+
+    print(f"Your result: {game.points}")
 
 if __name__ == '__main__':
     main()

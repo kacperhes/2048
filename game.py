@@ -28,7 +28,7 @@ class Game:
                     empty_cells.append((x, y))
 
         rx, ry = random.choice(empty_cells)
-        random_value = random.choice([2,4]) # TODO: change randomness
+        random_value = 2 if random.random() > 0.1 else 4
 
         self.grid[rx][ry] = random_value
 
@@ -135,6 +135,7 @@ class Game:
 
         self.__spawn_random_number()
 
+
     def can_move(self) -> bool:
         """
         Checks if next move is possible. The game is ended if the following is true:
@@ -159,6 +160,7 @@ class Game:
             (1,1),
         ]
 
+        # check if adjecent elements are the same
         for y in range(self.height):
             for x in range(self.width):
                 for nx, ny in neighbours:
