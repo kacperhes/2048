@@ -56,3 +56,7 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
 ## Testing
 
 To run the tests, use the following command:
+
+```bash
+python3 -m unittest discover -s tests
+```
