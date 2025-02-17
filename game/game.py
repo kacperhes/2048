@@ -126,11 +126,14 @@ class Game:
         print(f"Points: {self.points}", end=", ")
         print(f"Best Score: {self.best_score}")
 
+        horizontal_line = '-' * (self.width * 8 + 1)
+        print('\n' + horizontal_line)
+
         for row in self.grid:
-            print('\n')
+            print('|', end='')
             for col in row:
-                print(f'   {col}   ', end='')
-            print('\n')
+                 print(f' {col:^5} |', end='')
+            print('\n' + horizontal_line)
         print()
 
     
