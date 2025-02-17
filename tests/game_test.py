@@ -97,3 +97,22 @@ class GameTest(unittest.TestCase):
         self.game.points = 0
         self.game.make_move('DOWN')
         self.assertEqual(self.game.points, 20) # 4 from first column + 4 from second + 4 from third + 8 (2 merges) from last
+
+    def test_can_move(self):
+        self.game.grid = [
+            [2, 16, 2, 2],
+            [2, 2, 8, 2],
+            [2, 4, 2, 2],
+            [2, 2, 4, 2],
+        ]
+        self.assertTrue(self.game.can_move())
+
+
+    def test_cannot_move(self):
+        self.game.grid = [
+            [2, 4, 8, 16],
+            [32, 64, 128, 256],
+            [512, 1024, 2048, 4096],
+            [8192, 16384, 32768, 65536],
+        ]
+        self.assertFalse(self.game.can_move())

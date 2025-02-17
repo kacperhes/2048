@@ -30,6 +30,11 @@ def main():
             user_move_mapped = map_user_input(user_move)
             game.make_move(user_move_mapped)
             game.show_grid()
+    
+            # check if player can move
+            if not game.can_move():
+                print("Game ended!")
+                break
         except:
             print("Invalid input, try again!")
             continue

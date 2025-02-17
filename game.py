@@ -16,7 +16,7 @@ class Game:
         self.__spawn_random_number()
 
         
-    def __spawn_random_number(self):
+    def __spawn_random_number(self) -> None:
         """
         Spawns random element on the grid
         """
@@ -62,7 +62,7 @@ class Game:
         return arr + new_elements
 
 
-    def __move_left(self):
+    def __move_left(self) -> None:
         """
         Moves elements to the left by going through each row, merging them and then filling with 0s
         """
@@ -70,7 +70,7 @@ class Game:
             self.grid[row] = self.__fill_cells(self.__merge(self.grid[row]))
 
 
-    def __move_right(self):
+    def __move_right(self) -> None:
         """
         Moves elements in a row to the right
         """
@@ -80,7 +80,7 @@ class Game:
             ))
 
     
-    def __move_up(self):
+    def __move_up(self) -> None:
         """
         Transposes the matrix and merges elements like in move left, then transposes it back to original shape
         """
@@ -92,7 +92,7 @@ class Game:
         self.grid = list(map(list, zip(*transposed)))
 
 
-    def __move_down(self):
+    def __move_down(self) -> None:
         """
         Transposes the matrix and merges elements like in move right, then transposes it back to original shape
         """
@@ -112,7 +112,7 @@ class Game:
         Shows current grid
         """
         print(f"Points: {self.points} \n")
-        
+
         for row in self.grid:
             for col in row:
                 print(col, end=' ')
@@ -120,7 +120,7 @@ class Game:
         print()
 
     
-    def make_move(self, move: Literal['UP', 'DOWN', 'LEFT', 'RIGHT']):
+    def make_move(self, move: Literal['UP', 'DOWN', 'LEFT', 'RIGHT']) -> None:
         """
         Performs a move in a given direction
         """
@@ -134,3 +134,38 @@ class Game:
             self.__move_down()
 
         self.__spawn_random_number()
+
+    def can_move(self) -> bool:
+        """
+        Checks if next move is possible. The game is ended if the following is true:
+        1. All cells are marked
+        2. No adjecent cells are of the same value
+        """
+
+        # check if there are any free empty cells first
+        for row in range(self.height):
+            for col in range(self.width):
+                if self.grid[row][col] == 0:
+                    return True
+                
+        neighbours = [
+            (-1,-1),
+            (0,-1),
+            (1,-1),
+            (-1, 0),
+            (1,0),
+            (-1,1),
+            (0,1),
+            (1,1),
+        ]
+
+        for y in range(self.height):
+            for x in range(self.width):
+                for nx, ny in neighbours:
+                    if (0 <= x + nx < self.width and 
+                        0 <= y + ny < self.height and 
+                        self.grid[y][x] == self.grid[y + ny][x + nx]):
+                        return True
+                
+        return False
+        
