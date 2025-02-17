@@ -9,6 +9,8 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
 - **Tile Merging**: Tiles with the same number merge into one when they touch.
 - **Random Tile Spawning**: After each move, a new tile (2 or 4) is spawned in a random empty cell.
 - **Command Line Interface**: Play the game using simple keyboard inputs.
+- **Scoring System**: Points are accumulated each time tiles are merged. The score is the sum of the merged tiles.
+- **Caching Mechanism**: The game state is saved to a file, allowing you to resume the game later.
 
 ## Getting Started
 
@@ -29,6 +31,9 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
    python main.py
    ```
 
+## Additional options
+- `--no-cache`: Use this flag when running the game to disable the caching mechanism. This will prevent the game state from being saved and loaded.
+
 ## How to Play
 
 - Use the following keys to make moves:
@@ -45,6 +50,7 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
     - `__init__`: Initializes the game grid.
     - `make_move`: Executes a move in the specified direction.
     - `show_grid`: Displays the current state of the grid.
+    - `save_state` and `load_state`: Manage the game state caching.
 
 - **main.py**: Provides the command line interface for the game.
   - Key functions include:

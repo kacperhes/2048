@@ -1,8 +1,12 @@
 import random
+import json
+import os
 from typing import List, Literal
 
 class Game:
-    def __init__(self, width = 4, height = 4) -> None:
+    CACHE_FILE = './data/game_state.json'
+
+    def __init__(self, width = 4, height = 4, cache=True) -> None:
         """
         Creates new grid width default dimentions 4x4 or specified by user.
         After this it adds two random elements in the grid in empty cells
@@ -14,6 +18,9 @@ class Game:
 
         self.__spawn_random_number()
         self.__spawn_random_number()
+
+        if cache:
+            self.load_state()
 
         
     def __spawn_random_number(self) -> None:
@@ -170,4 +177,34 @@ class Game:
                         return True
                 
         return False
-        
+    
+
+    def save_state(self):
+        """
+        Saves current game state to json file
+        """
+        os.makedirs(os.path.dirname(self.CACHE_FILE), exist_ok=True)
+
+        with open(self.CACHE_FILE, 'w') as f:
+            json.dump({
+                'grid': self.grid,
+                'points': self.points,
+            }, f)
+
+
+    def load_state(self):
+        """
+        Loads game state from cache file
+        """
+        if os.path.exists(self.CACHE_FILE):
+            with open(self.CACHE_FILE, 'r') as f:
+                state = json.load(f)
+                self.grid = state['grid']
+                self.points = state['points'] 
+
+    def clear_cache(self):
+        """
+        Clears the state cache by removing the cache file
+        """
+        if os.path.exists(self.CACHE_FILE):
+            os.remove(self.CACHE_FILE)
