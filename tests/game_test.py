@@ -87,3 +87,13 @@ class GameTest(unittest.TestCase):
         self.game.make_move('DOWN')
         self.assertEqual(self.game.grid, expected)
 
+    def test_accumulate_points(self):
+        self.game.grid = [
+            [2, 0, 2, 2],
+            [2, 2, 0, 2],
+            [0, 0, 2, 2],
+            [2, 2, 4, 2],
+        ]
+        self.game.points = 0
+        self.game.make_move('DOWN')
+        self.assertEqual(self.game.points, 20) # 4 from first column + 4 from second + 4 from third + 8 (2 merges) from last

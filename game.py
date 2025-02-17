@@ -9,6 +9,7 @@ class Game:
         """
         self.width = width
         self.height = height
+        self.points = 0
         self.grid = [[0] * self.width for _ in range(self.height)]
 
         self.__spawn_random_number()
@@ -45,6 +46,8 @@ class Game:
             if elements[l] == elements[r]:
                 elements[l] = elements[l] * 2
                 del elements[r]
+
+                self.points += elements[l] # accumulate points on merge
 
             l += 1
             r += 1
@@ -108,6 +111,8 @@ class Game:
         """
         Shows current grid
         """
+        print(f"Points: {self.points} \n")
+        
         for row in self.grid:
             for col in row:
                 print(col, end=' ')
