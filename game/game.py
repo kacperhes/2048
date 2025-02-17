@@ -5,6 +5,7 @@ from typing import List, Literal
 
 class Game:
     CACHE_FILE = './data/game_state.json'
+    BEST_SCORE_FILE = './data/best_score.json'
 
     def __init__(self, width = 4, height = 4, cache=True) -> None:
         """
@@ -19,8 +20,12 @@ class Game:
         self.__spawn_random_number()
         self.__spawn_random_number()
 
+        # load game state from cache
         if cache:
             self.load_state()
+
+        # load best score
+        self.best_score = self.load_best_score()
 
         
     def __spawn_random_number(self) -> None:
@@ -118,11 +123,12 @@ class Game:
         """
         Shows current grid
         """
-        print(f"Points: {self.points} \n")
+        print(f"Points: {self.points}", end=", ")
+        print(f"Best Score: {self.best_score}")
 
         for row in self.grid:
             for col in row:
-                print(col, end=' ')
+                print(col, end='  ')
             print()
         print()
 
@@ -141,6 +147,10 @@ class Game:
             self.__move_down()
 
         self.__spawn_random_number()
+
+        if self.points > self.best_score:
+            self.best_score = self.points
+            self.save_best_score(self.best_score)
 
 
     def can_move(self) -> bool:
@@ -208,3 +218,26 @@ class Game:
         """
         if os.path.exists(self.CACHE_FILE):
             os.remove(self.CACHE_FILE)
+
+
+    def save_best_score(self, score: int) -> None:
+        """
+        Saves player's best score ever achieved
+        """
+        os.makedirs(os.path.dirname(self.BEST_SCORE_FILE), exist_ok=True)
+
+        with open(self.BEST_SCORE_FILE, 'w') as f:
+            json.dump({'score': score}, f)
+
+    
+    def load_best_score(self):
+        """
+        Loads best score achieved by player
+        """
+        if os.path.exists(self.BEST_SCORE_FILE):
+            with open(self.BEST_SCORE_FILE, 'r') as f:
+                score_state = json.load(f)
+                print(score_state)
+                return score_state['score']
+        else:
+            return 0

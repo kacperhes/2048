@@ -17,9 +17,12 @@ def map_user_input(move: str) -> Literal['UP', 'DOWN', 'LEFT', 'RIGHT']:
 
 def main():
      # Check for the no-cache flag
-    no_cache = '--no-cache' in sys.argv
+    cache = False if '--no-cache' in sys.argv else True
 
-    game = Game(cache=not no_cache)
+    game = Game(cache=cache)
+    if not cache:
+        game.clear_cache()
+
     print("Welcome to 2048!")
     game.show_grid()
 
