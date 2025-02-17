@@ -127,9 +127,10 @@ class Game:
         print(f"Best Score: {self.best_score}")
 
         for row in self.grid:
+            print('\n')
             for col in row:
-                print(col, end='  ')
-            print()
+                print(f'   {col}   ', end='')
+            print('\n')
         print()
 
     
@@ -237,7 +238,6 @@ class Game:
         if os.path.exists(self.BEST_SCORE_FILE):
             with open(self.BEST_SCORE_FILE, 'r') as f:
                 score_state = json.load(f)
-                print(score_state)
                 return score_state['score']
         else:
             return 0

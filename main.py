@@ -28,7 +28,7 @@ def main():
 
     while True:
         try:
-            user_move = input("Please make a move (w/a/s/d) or q if you want to finish: ")
+            user_move = input("Please make a move (w/a/s/d) or q if you want to finish: ").lower()
 
             if user_move == 'q':
                 print("Finishing the game!")
