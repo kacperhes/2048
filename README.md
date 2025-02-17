@@ -12,6 +12,9 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
 - **Scoring System**: Points are accumulated each time tiles are merged. The score is the sum of the merged tiles.
 - **Caching Mechanism**: The game state is saved to a file, allowing you to resume the game later.
 
+## Project structure
+TBA
+
 ## Getting Started
 
 ### Prerequisites
@@ -42,22 +45,6 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
   - `s`: Move DOWN
   - `d`: Move RIGHT
 - Press `q` to quit the game.
-
-## Code Structure
-
-- **game.py**: Contains the `Game` class which implements the game logic, including grid initialization, move handling, and tile merging.
-  - Key methods include:
-    - `__init__`: Initializes the game grid.
-    - `make_move`: Executes a move in the specified direction.
-    - `show_grid`: Displays the current state of the grid.
-    - `save_state` and `load_state`: Manage the game state caching.
-
-- **main.py**: Provides the command line interface for the game.
-  - Key functions include:
-    - `map_user_input`: Maps user input to game moves.
-    - `main`: The main function to start and run the game loop.
-
-- **tests/game_test.py**: Contains unit tests for the `Game` class to ensure the correctness of game logic.
 
 ## Testing
 

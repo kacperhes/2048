@@ -4,8 +4,8 @@ import os
 from typing import List, Literal
 
 class Game:
-    CACHE_FILE = './data/game_state.json'
-    BEST_SCORE_FILE = './data/best_score.json'
+    CACHE_FILE = './cache/game_state.json'
+    BEST_SCORE_FILE = './cache/best_score.json'
 
     def __init__(self, width = 4, height = 4, cache=True) -> None:
         """
@@ -189,7 +189,7 @@ class Game:
         return False
     
 
-    def save_state(self):
+    def save_state(self) -> None:
         """
         Saves current game state to json file
         """
@@ -202,7 +202,7 @@ class Game:
             }, f)
 
 
-    def load_state(self):
+    def load_state(self) -> None:
         """
         Loads game state from cache file
         """
@@ -212,7 +212,7 @@ class Game:
                 self.grid = state['grid']
                 self.points = state['points'] 
 
-    def clear_cache(self):
+    def clear_cache(self) -> None:
         """
         Clears the state cache by removing the cache file
         """
@@ -230,7 +230,7 @@ class Game:
             json.dump({'score': score}, f)
 
     
-    def load_best_score(self):
+    def load_best_score(self) -> int:
         """
         Loads best score achieved by player
         """

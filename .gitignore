@@ -1,4 +1,5 @@
+# virtual environments
 /venv
 
 # game local cache
-/data/*
+/cache/*
