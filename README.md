@@ -46,8 +46,8 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/2048-game.git
-cd 2048-game
+git clone https://github.com/yourusername/2048.git
+cd 2048
 ```
 2. Create virtual environment (optional but recommended):
 ```bash

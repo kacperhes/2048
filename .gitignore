@@ -1,3 +1,8 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
 # virtual environments
 /venv
 
