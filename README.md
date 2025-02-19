@@ -43,24 +43,24 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
 ### Installation
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/2048-game.git
-   cd 2048-game
-   ```
-   2. Create virtual environment (optional but recommended):
-   ```bash
-   python -m venv venv
-   ```
+```bash
+git clone https://github.com/yourusername/2048-game.git
+cd 2048-game
+```
+2. Create virtual environment (optional but recommended):
+```bash
+python -m venv venv
+```
 
-   3. Install dependencies
-   ```bash
-   pip install -r requirements.txt
-   ```
+3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
 
-   4. Run the game:
-   ```bash
-   python main.py
-   ```
+4. Run the game:
+```bash
+python main.py
+```
 
 ## Additional options
 - `[--no-cache]`: Use this flag when running the game to disable the caching mechanism. This will prevent the game state from being saved and loaded.
