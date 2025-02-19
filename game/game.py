@@ -132,7 +132,7 @@ class Game:
         for row in self.grid:
             print('|', end='')
             for col in row:
-                 print(f' {col:^5} |', end='')
+                print(f' {col:^5} |', end='')
             print('\n' + horizontal_line)
         print()
 
@@ -171,14 +171,10 @@ class Game:
                     return True
                 
         neighbours = [
-            (-1,-1),
-            (0,-1),
-            (1,-1),
             (-1, 0),
-            (1,0),
-            (-1,1),
-            (0,1),
-            (1,1),
+            (0, -1),
+            (1, 0),
+            (0, 1),
         ]
 
         # check if adjecent elements are the same

@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from game import Game
+from game.game import Game
 
 class GameTest(unittest.TestCase):
     def __create_game(self):
@@ -110,9 +110,9 @@ class GameTest(unittest.TestCase):
 
     def test_cannot_move(self):
         self.game.grid = [
-            [2, 4, 8, 16],
-            [32, 64, 128, 256],
-            [512, 1024, 2048, 4096],
-            [8192, 16384, 32768, 65536],
+            [2, 8, 4, 2],
+            [4, 2, 16, 4],
+            [16, 32, 256, 8],
+            [64, 256, 512, 16],
         ]
         self.assertFalse(self.game.can_move())
