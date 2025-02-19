@@ -18,11 +18,12 @@ def map_user_input(move: str) -> Literal['UP', 'DOWN', 'LEFT', 'RIGHT']:
     return move_dict[move]
 
 def main():
-     # Check for the no-cache flag
+     # check cache flag
     cache = False if '--no-cache' in sys.argv else True
 
     game = Game(cache=cache)
-    ai_helper = DQNHelper()
+    ai_helper = DQNHelper() if '--ai-suggestions' in sys.argv else None
+
     if not cache:
         game.clear_cache()
 
@@ -39,10 +40,10 @@ def main():
                 break
 
             # AI suggestions
-            current_state, _, _, = game.state()
-            suggested_move = ai_helper.get_best_move(current_state)
-
-            print(f"Suggested move: {suggested_move}")
+            if ai_helper:
+                current_state, _, _, = game.state()
+                suggested_move = ai_helper.get_best_move(current_state)
+                print(f"Suggested move: {suggested_move}")
 
             user_move_mapped = map_user_input(user_move)
             game.make_move(user_move_mapped)

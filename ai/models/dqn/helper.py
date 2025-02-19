@@ -20,7 +20,7 @@ class DQNHelper:
         """
         Given the current game board, returns the best move as predicted by DQN.
         :param game_state: 4x4 array representing the board state.
-        :return: Action literal UP/DOWN/LEFT/RIGHT
+        :return: Action literal 0 - UP/1 - LEFT/2 - DOWN/3 - RIGHT
         """
         game_state = np.array(game_state)
         processed_state = np.log2(game_state + 1).flatten()
