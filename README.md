@@ -11,6 +11,7 @@ Welcome to the 2048 Game project! This is a simple implementation of the popular
 - **Command Line Interface**: Play the game using simple keyboard inputs.
 - **Scoring System**: Points are accumulated each time tiles are merged. The score is the sum of the merged tiles.
 - **Caching Mechanism**: The game state is saved to a file, allowing you to resume the game later.
+- **AI Suggestions**: During the gameplay the player can turn on AI suggestions to help gain a better overall score.
 
 ## Project structure
 TBA
@@ -36,6 +37,7 @@ TBA
 
 ## Additional options
 - `--no-cache`: Use this flag when running the game to disable the caching mechanism. This will prevent the game state from being saved and loaded.
+- `--ai-suggestions`: Use this flag to enable AI move suggestions powered by the DQN model.
 
 ## How to Play
 
