@@ -39,6 +39,10 @@ class Game:
                 if self.grid[x][y] == 0:
                     empty_cells.append((x, y))
 
+
+        if not empty_cells:
+            return
+
         rx, ry = random.choice(empty_cells)
         random_value = 2 if random.random() > 0.1 else 4
 
@@ -156,6 +160,16 @@ class Game:
             self.best_score = self.points
             self.save_best_score(self.best_score)
 
+    def reset(self):
+        self.grid = [[0] * self.width for _ in range(self.height)]
+        self.points = 0
+        self.__spawn_random_number()
+        self.__spawn_random_number()
+
+        return self.grid
+
+    def state(self):
+        return (self.grid, self.points, not self.can_move())
 
     def can_move(self) -> bool:
         """

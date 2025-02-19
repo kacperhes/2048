@@ -1,6 +1,8 @@
 import sys
-from game.game import Game
 from typing import Literal
+
+from game.game import Game
+from ai.models.dqn.helper import DQNHelper
     
 def map_user_input(move: str) -> Literal['UP', 'DOWN', 'LEFT', 'RIGHT']:
     if move not in ['w', 'a', 's', 'd']:
@@ -20,6 +22,7 @@ def main():
     cache = False if '--no-cache' in sys.argv else True
 
     game = Game(cache=cache)
+    ai_helper = DQNHelper()
     if not cache:
         game.clear_cache()
 
@@ -34,6 +37,12 @@ def main():
                 print("Finishing the game!")
                 game.save_state()
                 break
+
+            # AI suggestions
+            current_state, _, _, = game.state()
+            suggested_move = ai_helper.get_best_move(current_state)
+
+            print(f"Suggested move: {suggested_move}")
 
             user_move_mapped = map_user_input(user_move)
             game.make_move(user_move_mapped)
