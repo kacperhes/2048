@@ -2,6 +2,8 @@
 
 Welcome to the 2048 Game project! This is a simple implementation of the popular 2048 game using Python. The game is played on a 4x4 grid, with the objective of merging tiles with the same number to reach the 2048 tile and higher. The project additionally contains AI suggestions using reinforcement learning (Deep Q-Network algorithm).
 
+![Gameplay](screenshots/game.png)
+
 ## Features
 
 - **Grid Initialization**: The game starts with a 4x4 grid with two random tiles initialized to either 2 or 4.
